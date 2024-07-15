@@ -1,0 +1,19 @@
+.contactItem {
+    color: brown;
+    text-align: center;
+    
+   
+    margin-left:  10px;
+    margin-right: auto;
+}
+.deleteBtn {
+align-items: center;
+border: none;
+margin-left: 10px;
+cursor: pointer;
+border-radius: 5px;
+}
+.deleteBtn:hover {
+background-color: rgb(124, 158, 61);
+
+}
