@@ -20,7 +20,7 @@ class ContactItem extends Component {
 ContactItem.propTypes = {
     id: propTypes.string,
     name: propTypes.string,
-    number: propTypes.number,
+    number: propTypes.string,
     deleteContact: propTypes.func,
 }
 export default ContactItem;

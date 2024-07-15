@@ -18,6 +18,7 @@ class App extends Component {
       filter: '',
     };
   }
+
   handleNewContact = ({ name, number }) => {
     const newContact = {
       id: nanoid(),
@@ -40,6 +41,12 @@ class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
   };
+  componentDidMount() {
+    const getContacts = JSON.parse(localStorage.getItem('contacts'));
+    console.log('get:', getContacts);
+    this.setState({ contacts: getContacts });
+  }
+
 
   render() {
     const { contacts, filter } = this.state;
