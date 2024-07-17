@@ -18,6 +18,24 @@ class App extends Component {
       filter: '',
     };
   }
+  // Aici incarcam contactele prima oara cand se da mount la aplicație
+  componentDidMount() {
+    console.log('ContactList mounted');
+    const storedContacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(storedContacts);
+    if (parsedContacts) {
+      
+      this.setState({ storedContacts: parsedContacts });
+ 
+    }
+  }
+  // Aici salvam contactele cand se face update la ele
+  componentDidUpdate(prevProps) {
+    if (prevProps.contacts !== this.state.contacts) {
+      console.log('ContactList updated');
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
 
   handleNewContact = ({ name, number }) => {
     const newContact = {
@@ -41,12 +59,6 @@ class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
   };
-  componentDidMount() {
-    const getContacts = JSON.parse(localStorage.getItem('contacts'));
-    console.log('get:', getContacts);
-    this.setState({ contacts: getContacts });
-  }
-
 
   render() {
     const { contacts, filter } = this.state;
